@@ -98,7 +98,7 @@ class _CupertinoControlsState extends State<CupertinoControls>
                   child: CircularProgressIndicator(),
                 )
               else
-                _buildHitArea(),
+                (),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -345,30 +345,31 @@ class _CupertinoControlsState extends State<CupertinoControls>
     );
   }
 
-  Widget _buildHitArea() {
-    final bool isFinished = _latestValue.position >= _latestValue.duration;
-    final bool showPlayButton =
-        widget.showPlayButton && !_latestValue.isPlaying && !_dragging;
+  Widget () {
+    return Container();
+    // final bool isFinished = _latestValue.position >= _latestValue.duration;
+    // final bool showPlayButton =
+    //     widget.showPlayButton && !_latestValue.isPlaying && !_dragging;
 
-    return GestureDetector(
-      onTap: _latestValue.isPlaying
-          ? _cancelAndRestartTimer
-          : () {
-              _hideTimer?.cancel();
+    // return GestureDetector(
+    //   onTap: _latestValue.isPlaying
+    //       ? _cancelAndRestartTimer
+    //       : () {
+    //           _hideTimer?.cancel();
 
-              setState(() {
-                notifier.hideStuff = false;
-              });
-            },
-      child: CenterPlayButton(
-        backgroundColor: widget.backgroundColor,
-        iconColor: widget.iconColor,
-        isFinished: isFinished,
-        isPlaying: controller.value.isPlaying,
-        show: showPlayButton,
-        onPressed: _playPause,
-      ),
-    );
+    //           setState(() {
+    //             notifier.hideStuff = false;
+    //           });
+    //         },
+    //   child: CenterPlayButton(
+    //     backgroundColor: widget.backgroundColor,
+    //     iconColor: widget.iconColor,
+    //     isFinished: isFinished,
+    //     isPlaying: controller.value.isPlaying,
+    //     show: showPlayButton,
+    //     onPressed: _playPause,
+    //   ),
+    // );
   }
 
   GestureDetector _buildMuteButton(
